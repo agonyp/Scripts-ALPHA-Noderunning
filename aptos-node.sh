@@ -47,6 +47,6 @@ unzip framework.zip
 
 aptos genesis generate-genesis --local-repository-dir ~/$WORKSPACE --output-dir ~/$WORKSPACE
 
-docker compose up --detach
+docker compose up -d
 
 echo "$(less ~/$WORKSPACE/$aptos_username.yaml)"
