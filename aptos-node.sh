@@ -1,10 +1,9 @@
 #!/bin/bash
 cd $HOME
-set -e
 
 sudo apt update && sudo apt upgrade
 
-sudo apt install -y wget unzip docker-ce docker-ce-cli containerd.io docker-compose-plugin || true
+sudo apt install -y wget unzip docker-ce docker-ce-cli containerd.io docker-compose-plugin </dev/null
 
 wget https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v0.1.1/aptos-cli-0.1.1-Ubuntu-x86_64.zip 
 
@@ -53,3 +52,11 @@ docker compose up -d
 echo "$(less ~/$WORKSPACE/$aptos_username.yaml)"
 echo "Full node IP:" $routable_ip
 echo "Full node port: 6182"
+echo "/---------------------------/"
+echo "Проверка логов:"
+echo "docker logs -f testnet-fullnode-1"
+echo "docker logs -f testnet-validator-1"
+echo "Перезапуск ноды:"
+echo "docker restart testnet-fullnode-1"
+echo "docker restart testnet-validator-1"
+export scriptfin=TRUE
