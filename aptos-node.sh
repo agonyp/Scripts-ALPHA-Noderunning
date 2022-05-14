@@ -31,6 +31,7 @@ aptos genesis set-validator-configuration \
     --keys-dir ~/$WORKSPACE --local-repository-dir ~/$WORKSPACE \
     --username $aptos_username \
     --validator-host $routable_ip:6180
+    --full-node-host $routable_ip:6182
 
 sudo tee <<EOF >/dev/null ~/$WORKSPACE/layout.yaml
 ---
@@ -46,6 +47,6 @@ unzip framework.zip
 
 aptos genesis generate-genesis --local-repository-dir ~/$WORKSPACE --output-dir ~/$WORKSPACE
 
-docker-compose up
+docker compose up --detach
 
 echo "$(less ~/$WORKSPACE/$aptos_username.yaml)"
