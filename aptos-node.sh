@@ -66,4 +66,3 @@ echo "docker logs -f testnet-validator-1"
 echo "Перезапуск ноды:"
 echo "docker restart testnet-fullnode-1"
 echo "docker restart testnet-validator-1"
-export scriptfin=TRUE
