@@ -1,11 +1,12 @@
 #!/bin/bash
 cd $HOME
+set -e
 
 sudo apt update && sudo apt upgrade
 
-sudo apt install -y wget unzip docker-ce docker-ce-cli containerd.io docker-compose-plugin \
+sudo apt install -y wget unzip docker-ce docker-ce-cli containerd.io docker-compose-plugin || true
 
-wget https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v0.1.1/aptos-cli-0.1.1-Ubuntu-x86_64.zip \
+wget https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v0.1.1/aptos-cli-0.1.1-Ubuntu-x86_64.zip 
 
 unzip aptos-cli-0.1.1-Ubuntu-x86_64.zip
 mv aptos /bin/
@@ -23,7 +24,7 @@ aptos genesis generate-keys --output-dir ~/$WORKSPACE
 
 export routable_ip="$(wget -qO- eth0.me)"
 
-read -p "Введите имя пользователя для вашей ноды: " aptos_username < /dev/tty
+read -p "Введите имя пользователя для вашей ноды:" aptos_username < /dev/tty
 
 echo 'Ваше имя пользователя: ' $aptos_username
 
