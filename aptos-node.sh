@@ -3,7 +3,14 @@ cd $HOME
 
 sudo apt update && sudo apt upgrade
 
-sudo apt install -y wget unzip docker-ce docker-ce-cli containerd.io docker-compose-plugin </dev/null
+sudo apt install -y wget unzip ca-certificates curl gnupg lsb-release </dev/null
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin </dev/null
 
 wget https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v0.1.1/aptos-cli-0.1.1-Ubuntu-x86_64.zip 
 
