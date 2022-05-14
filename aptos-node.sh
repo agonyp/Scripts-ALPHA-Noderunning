@@ -22,8 +22,11 @@ wget https://raw.githubusercontent.com/aptos-labs/aptos-core/main/docker/compose
 aptos genesis generate-keys --output-dir ~/$WORKSPACE
 
 export routable_ip="$(wget -qO- eth0.me)"
-read -p "Введите имя пользователя для вашей ноды: " aptos_username
-sleep 1
+if [ ! $aptos_username ]; then
+        read -p "Введите имя пользователя для вашей ноды: " aptos_username
+fi
+
+echo 'Ваше имя пользователя: ' $aptos_username
 
 aptos genesis set-validator-configuration \
     --keys-dir ~/$WORKSPACE --local-repository-dir ~/$WORKSPACE \
