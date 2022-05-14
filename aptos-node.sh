@@ -54,7 +54,7 @@ unzip framework.zip
 
 aptos genesis generate-genesis --local-repository-dir ~/$WORKSPACE --output-dir ~/$WORKSPACE
 
-docker compose up -d
+sudo docker compose up -d
 
 echo "$(less ~/$WORKSPACE/$aptos_username.yaml)"
 echo "Full node IP:" $routable_ip
