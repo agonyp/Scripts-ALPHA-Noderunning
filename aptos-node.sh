@@ -51,3 +51,5 @@ aptos genesis generate-genesis --local-repository-dir ~/$WORKSPACE --output-dir 
 docker compose up -d
 
 echo "$(less ~/$WORKSPACE/$aptos_username.yaml)"
+echo "Full node IP:" $routable_ip
+echo "Full node port: 6182"
