@@ -12,6 +12,8 @@ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev
 
 sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y </dev/null
 
+sudo chmod 666 /var/run/docker.sock
+
 wget https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v0.1.1/aptos-cli-0.1.1-Ubuntu-x86_64.zip 
 
 unzip aptos-cli-0.1.1-Ubuntu-x86_64.zip
