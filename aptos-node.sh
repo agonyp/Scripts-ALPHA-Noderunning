@@ -3,9 +3,9 @@ cd $HOME
 
 sudo apt update && sudo apt upgrade
 
-sudo apt install -y wget unzip docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt install -y wget unzip docker-ce docker-ce-cli containerd.io docker-compose-plugin \
 
-wget https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v0.1.1/aptos-cli-0.1.1-Ubuntu-x86_64.zip
+wget https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v0.1.1/aptos-cli-0.1.1-Ubuntu-x86_64.zip \
 
 unzip aptos-cli-0.1.1-Ubuntu-x86_64.zip
 mv aptos /bin/
