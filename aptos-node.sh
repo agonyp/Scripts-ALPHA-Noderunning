@@ -37,7 +37,7 @@ echo 'Ваше имя пользователя: ' $aptos_username
 aptos genesis set-validator-configuration \
     --keys-dir ~/$WORKSPACE --local-repository-dir ~/$WORKSPACE \
     --username $aptos_username \
-    --validator-host $routable_ip:6180
+    --validator-host $routable_ip:6180 \
     --full-node-host $routable_ip:6182
 
 sudo tee <<EOF >/dev/null ~/$WORKSPACE/layout.yaml
