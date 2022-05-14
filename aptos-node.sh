@@ -23,7 +23,7 @@ aptos genesis generate-keys --output-dir ~/$WORKSPACE
 
 export routable_ip="$(wget -qO- eth0.me)"
 if [ ! $aptos_username ]; then
-        read -p "Введите имя пользователя для вашей ноды: " aptos_username
+        read -p "Введите имя пользователя для вашей ноды: " aptos_username < /dev/tty
 fi
 
 echo 'Ваше имя пользователя: ' $aptos_username
