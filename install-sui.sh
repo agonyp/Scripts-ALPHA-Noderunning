@@ -124,12 +124,15 @@ sudo systemctl daemon-reload
 sudo systemctl enable seid
 sudo systemctl restart seid
 
+echo 'alias sei_logs="sudo journalctl -u seid -f -o cat"' >> $HOME/.bash_profile
+echo 'alias sei_stats_sync="curl -s localhost:26657/status | jq .result.sync_info"' >> $HOME/.bash_profile
+echo 'alias sei_wallet_balance="seid query bank balances $WALLET_ADDRESS"' >> $HOME/.bash_profile
+echo 'alias sei_faucet="curl -X POST -d '{"'"address"'": "'"$WALLET_ADDRESS"'", "'"coins"'": ["'"1000000usei"'"]}' http://3.22.112.181:8000"' >> $HOME/.bash_profile
+
 source $HOME/.bash_profile
 
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
-echo -e 'Проверка логов: \e[1m\e[32mjournalctl -u seid -f -o cat \e[0m'
-echo -e 'Проверить статус синхронизации: \e[1m\e[32mcurl -s localhost:26657/status | jq .result.sync_info \e[0m'
-echo -e "Адрес вашего кошелька: \e[1;32m$WALLET_ADDRESS\e[0m"
-echo -e 'Резервная копия с адресом и мненмоникой вашего кошелька была сохранена в файл, для просмотра выполните: \e[1;32m nano ~/seiwal-backup.txt\e[0m'
-echo -e 'На Ваш кошелек были запрошены монеты из крана тестовой сети для проверки баланса выполните команду: \e[1;32mseid query bank balances $WALLET_ADDRESS\e[0m'
-#Добавить алиасы для удобства
+echo -e 'Проверка логов: \e[1m\e[32msei_logs \e[0m'
+echo -e 'Проверить статус синхронизации: \e[1m\e[32msei_stats_sync \e[0m'
+echo -e 'Проверить баланс кошелька: \e[1m\e[32msei_wallet_balance \e[0m'
+echo -e 'Запросить токены из faucet: \e[1m\e[32msei_faucet \e[0m'
