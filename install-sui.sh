@@ -99,7 +99,7 @@ sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_rec
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.sei-chain/config/app.toml
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.sei-chain/config/app.toml
 
-seid tendermint unsafe-reset-all
+seid unsafe-reset-all
 
 echo -e "\e[1m\e[32m4. Запускаем сервис... \e[0m" && sleep 1
 
