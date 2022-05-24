@@ -36,7 +36,7 @@ source $HOME/.bash_profile
 
 echo '================================================='
 echo -e "Имя ноды: \e[1m\e[32m$NODENAME\e[0m"
-echo -e "Ваш кошелек: \e[1m\e[32m$WALLET\e[0m"
+#echo -e "Ваш кошелек: \e[1m\e[32m$WALLET\e[0m"
 echo -e "Имя сети: \e[1m\e[32m$CHAIN_ID\e[0m"
 echo -e '================================================='
 sleep 2
@@ -84,7 +84,7 @@ wget -qO $HOME/.sei-chain/config/addrbook.json "https://raw.githubusercontent.co
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0usei\"/" $HOME/.sei-chain/config/app.toml
 
 SEEDS=""
-PEERS="27aab76f983cd7c6558f1dfc50b919daaef14555@3.22.112.181:26656,39c4bcaded0d1d886f2788ae955f1939406f3e7d@65.108.198.54:26696,2f2804434afda302c86eb89eca27503e49a8a260@65.21.131.215:26696,6f71bcbe347069fc4df9b607f6b843226e8deb71@95.217.221.201:26656,2f047e234cb8b99fe8b9fee0059a5bc45042bc97@95.216.84.188:26656,3cd0ccddaba6c662fb5f4836456f448f13653587@212.125.21.178:45656,9db58dba3b6354177fb428caccf5167c616ad4a1@167.235.28.18:26656,38b4d78c7d6582fb170f6c19330a7e37e6964212@194.163.189.114:46656"
+PEERS="27aab76f983cd7c6558f1dfc50b919daaef14555@3.22.112.181:26656,39c4bcaded0d1d886f2788ae955f1939406f3e7d@65.108.198.54:26696,2f2804434afda302c86eb89eca27503e49a8a260@65.21.131.215:26696,6f71bcbe347069fc4df9b607f6b843226e8deb71@95.217.221.201:26656,2f047e234cb8b99fe8b9fee0059a5bc45042bc97@95.216.84.188:26656,3cd0ccddaba6c662fb5f4836456f448f13653587@212.125.21.178:45656,9db58dba3b6354177fb428caccf5167c616ad4a1@167.235.28.18:26656,38b4d78c7d6582fb170f6c19330a7e37e6964212@194.163.189.114:46656,dc882e58c0c51763a12423dfcac5815ef092bc29@65.108.202.114:26656"
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.sei-chain/config/config.toml
 
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.sei-chain/config/config.toml
@@ -124,6 +124,24 @@ sudo systemctl daemon-reload
 sudo systemctl enable seid
 sudo systemctl restart seid
 
+source $HOME/.bash_profile
+#Кошель
+seid keys add $WALLET 2>&1 | tee ~/seiwal-backup.txt
+
+WALLET_ADDRESS=$(seid keys show $WALLET -a)
+
+VALOPER_ADDRESS=$(seid keys show $WALLET --bech val -a)
+
+echo 'export WALLET_ADDRESS='${WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export VALOPER_ADDRESS='${VALOPER_ADDRESS} >> $HOME/.bash_profile
+source $HOME/.bash_profile
+
+curl -X POST -d '{"address": "'"$WALLET_ADDRESS"'", "coins": ["1000000usei"]}' http://3.22.112.181:8000
+
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
 echo -e 'Проверка логов: \e[1m\e[32mjournalctl -u seid -f -o cat \e[0m'
 echo -e 'Проверить статус синхронизации: \e[1m\e[32mcurl -s localhost:26657/status | jq .result.sync_info \e[0m'
+echo -e "Адрес вашего кошелька: \e[1;32m$WALLET_ADDRESS\e[0m"
+echo -e 'Резервная копия с адресом и мненмоникой вашего кошелька была сохранена в файл, для просмотра выполните: \e[1;32m nano ~/seiwal-backup.txt\e[0m'
+echo -e 'На Ваш кошелек были запрошены монеты из крана тестовой сети для проверки баланса выполните команду: \e[1;32mseid query bank balances $WALLET_ADDRESS\e[0m'
+#Добавить алиасы для удобства
