@@ -27,7 +27,7 @@ sleep 2
 
 
 if [ ! $NODENAME ]; then
-	read -p "Введите имя ноды: " NODENAME
+	read -p "Введите имя ноды: " NODENAME < /dev/tty
 	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
 fi
 echo "export WALLET=wallet" >> $HOME/.bash_profile
