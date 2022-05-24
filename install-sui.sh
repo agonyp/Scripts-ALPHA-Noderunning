@@ -125,5 +125,5 @@ sudo systemctl enable seid
 sudo systemctl restart seid
 
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
-echo -e 'To check logs: \e[1m\e[32mjournalctl -u seid -f -o cat \e[0m'
-echo -e 'To check sync status: \e[1m\e[32mcurl -s localhost:26657/status | jq .result.sync_info \e[0m'
+echo -e 'Проверка логов: \e[1m\e[32mjournalctl -u seid -f -o cat \e[0m'
+echo -e 'Проверить статус синхронизации: \e[1m\e[32mcurl -s localhost:26657/status | jq .result.sync_info \e[0m'
