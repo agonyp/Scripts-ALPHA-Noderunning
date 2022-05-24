@@ -125,19 +125,6 @@ sudo systemctl enable seid
 sudo systemctl restart seid
 
 source $HOME/.bash_profile
-#Кошель
-export WALLET=wallet
-seid keys add $WALLET < /dev/tty 2>&1 | tee ~/seiwal-backup.txt
-
-WALLET_ADDRESS=$(seid keys show $WALLET -a)
-
-VALOPER_ADDRESS=$(seid keys show $WALLET --bech val -a)
-
-echo 'export WALLET_ADDRESS='${WALLET_ADDRESS} >> $HOME/.bash_profile
-echo 'export VALOPER_ADDRESS='${VALOPER_ADDRESS} >> $HOME/.bash_profile
-source $HOME/.bash_profile
-
-curl -X POST -d '{"address": "'"$WALLET_ADDRESS"'", "coins": ["1000000usei"]}' http://3.22.112.181:8000
 
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
 echo -e 'Проверка логов: \e[1m\e[32mjournalctl -u seid -f -o cat \e[0m'
