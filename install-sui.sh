@@ -126,6 +126,7 @@ sudo systemctl restart seid
 
 source $HOME/.bash_profile
 #Кошель
+export WALLET=wallet
 seid keys add $WALLET < /dev/tty 2>&1 | tee ~/seiwal-backup.txt
 
 WALLET_ADDRESS=$(seid keys show $WALLET -a)
