@@ -128,7 +128,7 @@ sudo systemctl restart seid
 echo 'alias sei_logs="sudo journalctl -u seid -f -o cat"' >> $HOME/.bash_profile
 echo 'alias sei_stats_sync="curl -s localhost:26657/status | jq .result.sync_info"' >> $HOME/.bash_profile
 echo 'alias sei_wallet_balance="seid query bank balances $WALLET_ADDRESS"' >> $HOME/.bash_profile
-echo 'alias sei_faucet="curl -X POST -d '{"'"address"'": "'"$WALLET_ADDRESS"'", "'"coins"'": ["'"1000000usei"'"]}' http://3.22.112.181:8000"' >> $HOME/.bash_profile
+echo 'alias sei_faucet="curl -X POST -d '{"'"address"'": '"'"'"'"''$WALLET_ADDRESS''"'"'"'"', "'"coins"'": ["'"1000000usei"'"]}' http://3.22.112.181:8000"' >> $HOME/.bash_profile
 
 source $HOME/.bash_profile
 
