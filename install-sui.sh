@@ -52,20 +52,20 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bs
 
 
 ver="1.17.2"
-cd $HOME
+cd $HOME || exit
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
 rm "go$ver.linux-amd64.tar.gz"
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
+source $HOME/.bash_profile
 go version
 
 echo -e "\e[1m\e[32m3. Качаем и компилируем ноду... \e[0m" && sleep 1
 
-cd $HOME
+cd $HOME || exit
 git clone https://github.com/sei-protocol/sei-chain.git
-cd sei-chain
+cd sei-chain || exit
 git checkout 1.0.0beta
 go build -o build/seid ./cmd/sei-chaind
 chmod +x ./build/seid && sudo mv ./build/seid /usr/local/bin/seid
