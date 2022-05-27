@@ -141,7 +141,6 @@ sudo systemctl restart quicksilverd
 echo 'alias quicksilver_log="journalctl -u quicksilverd -f -o cat"' >> $HOME/.bash_profile
 echo 'alias quicksilver_sync_stat="curl -s localhost:26657/status | jq .result.sync_info"' >> $HOME/.bash_profile
 
-source $HOME/.bash_profile
 
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
 echo -e 'Проверка логов: \e[1m\e[32mquicksilver_log \e[0m'
