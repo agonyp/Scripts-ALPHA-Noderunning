@@ -31,7 +31,7 @@ if [ ! $NODENAME ]; then
 	read -p "Введите моникер ноды: " NODENAME
 	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
 fi
-echo "export WALLET=wallet" >> $HOME/.bash_profile
+echo "export WALLET=quickwallet" >> $HOME/.bash_profile
 echo "export CHAIN_ID=quicktest-3" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
