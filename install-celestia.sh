@@ -51,6 +51,12 @@ CELESTIA_CHAIN="mamaki"
 read -p "Введите имя ноды: " CELESTIA_NODENAME < /dev/tty
 read -p "Введите имя кошелька: " CELESTIA_WALLET < /dev/tty
 
+echo '================================================='
+echo -e "Имя ноды: \e[1m\e[32m$CELESTIA_NODENAME\e[0m"
+echo -e "Имя кошелька: \e[1m\e[32m$CELESTIA_WALLET\e[0m"
+echo -e "Имя сети: \e[1m\e[32m$CELESTIA_CHAIN\e[0m"
+echo -e '================================================='
+
 echo "
 export CELESTIA_CHAIN=${CELESTIA_CHAIN}
 export CELESTIA_NODENAME=${CELESTIA_NODENAME}
@@ -100,3 +106,5 @@ sudo mv $HOME/celestia-appd.service /etc/systemd/system/
 sudo systemctl enable celestia-appd
 sudo systemctl daemon-reload
 sudo systemctl restart celestia-appd
+
+echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
