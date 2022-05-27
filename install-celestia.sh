@@ -107,4 +107,10 @@ sudo systemctl enable celestia-appd
 sudo systemctl daemon-reload
 sudo systemctl restart celestia-appd
 
+echo 'alias celestia_log="journalctl -u celestia-appd -f -o cat"' >> $HOME/.bash_profile
+echo 'alias celestia_sync_stat="curl -s localhost:26657/status | jq .result.sync_info"' >> $HOME/.bash_profile
+
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
+echo -e 'Проверка логов: \e[1m\e[32mcelestia_log \e[0m'
+echo -e 'Проверить статус синхронизации: \e[1m\e[32mcelestia_stats_sync \e[0m'
+echo -e 'После установки выполните: \e[1m\e[32msource $HOME/.bash_profile \e[0m'
