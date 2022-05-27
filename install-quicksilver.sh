@@ -28,7 +28,7 @@ sleep 2
 
 # set vars
 if [ ! $NODENAME ]; then
-	read -p "Введите моникер ноды: " NODENAME
+	read -p "Введите моникер ноды: " NODENAME < /dev/tty
 	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
 fi
 echo "export WALLET=quickwallet" >> $HOME/.bash_profile
