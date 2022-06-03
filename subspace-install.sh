@@ -106,5 +106,5 @@ EOF
 
 cd $HOME/subspace
  
-docker-compose up -d
+docker compose up -d
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
