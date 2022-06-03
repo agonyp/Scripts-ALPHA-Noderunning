@@ -24,7 +24,7 @@ echo -e "\e[1;30m#########\e[0m\e[1;35m=+++++++*\e[0m\e[1;30m#######\e[1;35m*+++
 echo -e "\e[1;30m##############\e[0m\e[1;35m+++++++++++++++\e[0m\e[1;30m##############\e[0m";
 echo -e "==========================================="
 echo -e "\e[1;32m Обновляем пакеты в системе...\e[0m"
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
 echo -e "\e[1;32m Устанавливаем Docker...\e[0m" && sleep 1
 sudo apt install -y wget unzip ca-certificates curl gnupg lsb-release </dev/null
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
