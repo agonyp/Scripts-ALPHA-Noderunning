@@ -108,3 +108,5 @@ cd $HOME/subspace
  
 docker compose up -d
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
+echo -e 'Проверка логов ноды: \e[1m\e[32mdocker logs subspace-node-1 \e[0m'
+echo -e 'Проверка логов фармера: \e[1m\e[32mdocker logs subspace-farmer-1 \e[0m'
