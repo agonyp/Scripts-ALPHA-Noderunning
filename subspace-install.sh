@@ -51,7 +51,7 @@ export PLOT_SIZE=${PLOT_SIZE}
 
 mkdir $HOME/subspace
 
-sudo tee <<EOF >/dev/null ~/$HOME/subspace/docker-compose.yml
+sudo tee <<EOF >/dev/null $HOME/subspace/docker-compose.yml
 version: "3.7"
 services:
   node:
