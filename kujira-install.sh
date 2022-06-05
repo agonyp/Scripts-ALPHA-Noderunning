@@ -119,7 +119,7 @@ echo 'alias kujira_sync_stat="curl -s localhost:26657/status | jq .result.sync_i
 
 
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
-echo -e 'Выполните команду: \e[1m\e[32source $HOME/.bash_profile \e[0m'
+echo -e 'Выполните команду: \e[1m\e[32msource $HOME/.bash_profile \e[0m'
 echo -e 'Проверка логов: \e[1m\e[32mkujira_log \e[0m'
 echo -e 'Проверка синхронизации: \e[1m\e[32m kujira_sync_stat \e[0m'
 echo -e 'Создаем кошелек: \e[1m\e[32m kujirad keys add $WALLET \e[0m'
