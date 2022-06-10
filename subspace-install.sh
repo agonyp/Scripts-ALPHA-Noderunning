@@ -55,7 +55,7 @@ sudo tee <<EOF >/dev/null $HOME/subspace/docker-compose.yml
 version: "3.7"
 services:
   node:
-    image: ghcr.io/subspace/node:gemini-1b-2022-june-05
+    image: ghcr.io/subspace/node:gemini-1b-2022-jun-10
     volumes:
       - node-data:/var/subspace:rw
 #      - /path/to/subspace-node:/var/subspace:rw
@@ -85,7 +85,7 @@ services:
       node:
         condition: service_healthy
 
-    image: ghcr.io/subspace/farmer:gemini-1b-2022-june-05
+    image: ghcr.io/subspace/farmer:gemini-1b-2022-jun-10
 
     volumes:
       - farmer-data:/var/subspace:rw
