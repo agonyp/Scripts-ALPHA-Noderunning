@@ -7,3 +7,6 @@ git checkout 1.0.3beta
 make install
 
 sudo systemctl restart seid
+
+export CHAIN_ID=sei-testnet-2
+source $HOME/.bash_profile
