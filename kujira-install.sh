@@ -32,7 +32,7 @@ if [ ! $NODENAME ]; then
 	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
 fi
 echo "export WALLET=kujirawallet" >> $HOME/.bash_profile
-echo "export CHAIN_ID=harpoon-3" >> $HOME/.bash_profile
+echo "export CHAIN_ID=harpoon-4" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
 echo '================================================='
@@ -64,6 +64,7 @@ echo -e "\e[1m\e[32m3. Качаем и компилируем ноду... \e[0m"
 cd $HOME
 git clone https://github.com/Team-Kujira/core $HOME/kujira-core
 cd $HOME/kujira-core
+git checkout v0.4.0
 make install
 echo $(kujirad version) && sleep 1
 
@@ -72,7 +73,7 @@ kujirad init "${NODENAME}" --chain-id ${CHAIN_ID}
 
 
 
-wget https://raw.githubusercontent.com/Team-Kujira/networks/master/testnet/harpoon-3.json -O $HOME/.kujira/config/genesis.json
+wget https://raw.githubusercontent.com/Team-Kujira/networks/master/testnet/harpoon-4.json -O $HOME/.kujira/config/genesis.json
 
 wget https://raw.githubusercontent.com/Team-Kujira/networks/master/testnet/addrbook.json -O $HOME/.kujira/config/addrbook.json
 
