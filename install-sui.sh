@@ -67,7 +67,7 @@ cd $HOME || exit
 git clone https://github.com/sei-protocol/sei-chain.git
 cd sei-chain || exit
 git checkout 1.0.3beta
-go build -o build/seid ./cmd/sei-chaind
+go build -o build/seid ./cmd/seid
 chmod +x ./build/seid && sudo mv ./build/seid /usr/local/bin/seid
 
 
