@@ -41,7 +41,7 @@ cd $HOME
 git clone https://github.com/celestiaorg/celestia-app
 cd celestia-app
 git fetch
-git checkout v0.5.0
+git checkout v0.5.3
 make install
 
 cd $HOME
@@ -81,6 +81,8 @@ bpeers="f0c58d904dec824605ac36114db28f1bf84f6ea3@144.76.112.238:26656"
 sed -i.bak -e "s/^bootstrap-peers *=.*/bootstrap-peers = \"$bpeers\"/" $HOME/.celestia-app/config/config.toml
 
 sed -i.bak -e "s/^timeout-commit *=.*/timeout-commit = \"25s\"/" $HOME/.celestia-app/config/config.toml
+sed -i.bak -e "s/^skip-timeout-commit *=.*/skip-timeout-commit = false/" $HOME/.celestia-app/config/config.toml
+
 sed -i.bak -e "s/^skip-timeout-commit *=.*/skip-timeout-commit = false/" $HOME/.celestia-app/config/config.toml
 
 
