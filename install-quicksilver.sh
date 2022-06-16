@@ -61,7 +61,7 @@ source $HOME/.bash_profile
 go version
 
 echo -e "\e[1m\e[32m3. Качаем и компилируем ноду... \e[0m" && sleep 1
-# download binary
+
 cd $HOME
 git clone https://github.com/ingenuity-build/quicksilver.git --branch v0.3.0
 cd quicksilver
