@@ -112,7 +112,7 @@ s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.quicksilverd/config/config.toml
 
 
-quicksilverd unsafe-reset-all
+quicksilverd tendermint unsafe-reset-all
 
 echo -e "\e[1m\e[32m4. Запускаем системную службу... \e[0m" && sleep 1
 
