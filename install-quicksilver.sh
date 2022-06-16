@@ -32,7 +32,7 @@ if [ ! $NODENAME ]; then
 	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
 fi
 echo "export WALLET=quickwallet" >> $HOME/.bash_profile
-echo "export CHAIN_ID=quicktest-3" >> $HOME/.bash_profile
+echo "export CHAIN_ID=rhapsody-5" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
 echo '================================================='
@@ -63,7 +63,7 @@ go version
 echo -e "\e[1m\e[32m3. Качаем и компилируем ноду... \e[0m" && sleep 1
 # download binary
 cd $HOME
-git clone https://github.com/ingenuity-build/quicksilver.git --branch v0.1.10
+git clone https://github.com/ingenuity-build/quicksilver.git --branch v0.3.0
 cd quicksilver
 make build
 chmod +x ./build/quicksilverd && mv ./build/quicksilverd /usr/local/bin/quicksilverd
@@ -82,7 +82,7 @@ wget -qO $HOME/.quicksilverd/config/genesis.json "https://raw.githubusercontent.
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0uqck\"/" $HOME/.quicksilverd/config/app.toml
 
 
-SEEDS="dd3460ec11f78b4a7c4336f22a356fe00805ab64@seed.quicktest-1.quicksilver.zone:26656"
+SEEDS="dd3460ec11f78b4a7c4336f22a356fe00805ab64@seed.rhapsody-5.quicksilver.zone:26656"
 PEERS=""
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.quicksilverd/config/config.toml
 
