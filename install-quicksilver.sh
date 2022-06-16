@@ -66,7 +66,7 @@ cd $HOME
 git clone https://github.com/ingenuity-build/quicksilver.git --branch v0.3.0
 cd quicksilver
 make build
-chmod +x ./build/quicksilverd && mv ./build/quicksilverd /usr/local/bin/quicksilverd
+chmod +x ./build/quicksilverd && sudo mv ./build/quicksilverd /usr/local/bin/quicksilverd
 
 echo -e "\e[1m\e[32m3. Конфигурируем ноду... \e[0m" && sleep 1
 quicksilverd config chain-id $CHAIN_ID
