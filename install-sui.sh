@@ -51,7 +51,7 @@ echo -e "\e[1m\e[32m2. Устанвливаем требуемые прилож�
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y </dev/null
 
 
-ver="1.17.2"
+ver="1.18.2"
 cd $HOME || exit
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
