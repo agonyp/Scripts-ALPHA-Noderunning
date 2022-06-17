@@ -77,6 +77,7 @@ quicksilverd init $NODENAME --chain-id $CHAIN_ID
 
 
 wget -qO $HOME/.quicksilverd/config/genesis.json "https://raw.githubusercontent.com/ingenuity-build/testnets/main/rhapsody/genesis.json"
+wget -qO $HOME/.quicksilverd/config/addrbook.json "https://raw.githubusercontent.com/agonyp/Scripts-ALPHA-Noderunning/main/utilities/quicksilver-addrbook.json"
 
 
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0uqck\"/" $HOME/.quicksilverd/config/app.toml
