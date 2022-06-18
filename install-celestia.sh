@@ -77,7 +77,7 @@ wget -O $HOME/.celestia-app/config/genesis.json "https://github.com/celestiaorg/
 peers=$(curl -sL https://raw.githubusercontent.com/celestiaorg/networks/master/mamaki/peers.txt | tr -d '\n' | head -c -1) && echo $peers
 sed -i.bak -e "s/^persistent-peers *=.*/persistent-peers = \"$peers\"/" $HOME/.celestia-app/config/config.toml
 
-bpeers="f0c58d904dec824605ac36114db28f1bf84f6ea3@144.76.112.238:26656"
+bpeers="c9e17ca0213ab914df984ed496382c8f41611053@89.58.45.204:26656"
 sed -i.bak -e "s/^bootstrap-peers *=.*/bootstrap-peers = \"$bpeers\"/" $HOME/.celestia-app/config/config.toml
 
 sed -i.bak -e "s/^timeout-commit *=.*/timeout-commit = \"25s\"/" $HOME/.celestia-app/config/config.toml
