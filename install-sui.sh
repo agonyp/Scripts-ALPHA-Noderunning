@@ -51,7 +51,7 @@ echo -e "\e[1m\e[32m2. Устанвливаем требуемые прилож�
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y </dev/null
 
 
-ver="1.18.1"
+ver="1.18.2"
 cd $HOME || exit
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
@@ -66,20 +66,20 @@ echo -e "\e[1m\e[32m3. Качаем и компилируем ноду... \e[0m"
 cd $HOME || exit
 git clone https://github.com/sei-protocol/sei-chain.git
 cd sei-chain || exit
-git checkout 1.0.3beta
-make install
+git checkout 1.0.2beta
+go build -o build/seid ./cmd/seid
+chmod +x ./build/seid && sudo mv ./build/seid /usr/local/bin/seid
+
+
+seid config chain-id $CHAIN_ID
+seid config keyring-backend file
 
 
 seid init $NODENAME --chain-id $CHAIN_ID
 
 
 wget -qO $HOME/.sei/config/genesis.json "https://raw.githubusercontent.com/sei-protocol/testnet/master/sei-testnet-2/genesis.json"
-
-seid tendermint unsafe-reset-all --home $HOME/.sei
-
-wget -qO $HOME/.sei/config/addrbook.json "https://raw.githubusercontent.com/sei-protocol/testnet/main/sei-testnet-2/addrbook.json"
-
-seid config chain-id sei-testnet-2
+wget -qO $HOME/.sei/config/addrbook.json "https://raw.githubusercontent.com/agonyp/Scripts-ALPHA-Noderunning/main/utilities/sei-addrbook.json"
 
 
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0usei\"/" $HOME/.sei/config/app.toml
@@ -88,9 +88,7 @@ SEEDS=""
 PEERS=""
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.sei/config/config.toml
 
-snapshot_interval="1000" && \
-sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/.sei/config/app.toml
-
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.sei/config/config.toml
 
 pruning="custom"
 pruning_keep_recent="100"
@@ -102,7 +100,7 @@ sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_rec
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.sei/config/app.toml
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.sei/config/app.toml
 
-
+seid unsafe-reset-all
 
 echo -e "\e[1m\e[32m4. Запускаем сервис... \e[0m" && sleep 1
 
