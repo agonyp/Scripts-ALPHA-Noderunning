@@ -26,9 +26,11 @@ echo -e "==========================================="
 echo -e "\e[1;32m Обновляем пакеты в системе...\e[0m"
 apt update && apt upgrade -y
 echo -e "\e[1;32m Устанавливаем требуемые пакеты...\e[0m"
-apt install build-essential libssl-dev pkg-config clang -y
+apt install git build-essential libssl-dev pkg-config clang -y
 echo -e "\e[1;32m Устанавливаем rustup...\e[0m"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+source $HOME/.cargo/env
 
 # nomic currently requires rust nightly
 rustup default nightly
