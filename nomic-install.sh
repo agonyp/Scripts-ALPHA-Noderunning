@@ -33,6 +33,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # nomic currently requires rust nightly
 rustup default nightly
 
+source $HOME/.cargo/env
+
 # clone
 git clone https://github.com/nomic-io/nomic.git nomic && cd nomic
 
