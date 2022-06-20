@@ -24,9 +24,9 @@ echo -e "\e[1;30m#########\e[0m\e[1;35m=+++++++*\e[0m\e[1;30m#######\e[1;35m*+++
 echo -e "\e[1;30m##############\e[0m\e[1;35m+++++++++++++++\e[0m\e[1;30m##############\e[0m";
 echo -e "==========================================="
 echo -e "\e[1;32m Обновляем пакеты в системе...\e[0m"
-sudo apt update && sudo apt upgrade -y
+apt update && apt upgrade -y
 echo -e "\e[1;32m Устанавливаем требуемые пакеты...\e[0m"
-sudo apt install build-essential libssl-dev pkg-config clang -y
+apt install build-essential libssl-dev pkg-config clang -y
 echo -e "\e[1;32m Устанавливаем rustup...\e[0m"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
