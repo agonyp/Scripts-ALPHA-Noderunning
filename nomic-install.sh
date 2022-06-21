@@ -27,15 +27,14 @@ echo -e "\e[1;32m Обновляем пакеты в системе...\e[0m"
 sudo apt update && sudo apt upgrade -y
 echo -e "\e[1;32m Устанавливаем требуемые пакеты...\e[0m"
 sudo apt install git build-essential libssl-dev pkg-config clang -y
-echo -e "\e[1;32m Устанавливаем rustup...\e[0m"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
+echo -e "\e[1;32m Устанавливаем Rust...\e[0m"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 
 # nomic currently requires rust nightly
 rustup default nightly
 
-source $HOME/.cargo/env
+
 
 # clone
 git clone https://github.com/nomic-io/nomic.git nomic && cd nomic
@@ -44,7 +43,9 @@ git clone https://github.com/nomic-io/nomic.git nomic && cd nomic
 git checkout develop
 
 # build and install, adding a `nomic` command to your PATH
-cargo install --locked --path .
+cargo build --locked
+
+sudo mv ~/nomic/target/debug/nomic /usr/local/bin/
 
 nomic init
 external_address="11.11.11.11:26656"
