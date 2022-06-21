@@ -43,7 +43,9 @@ git clone https://github.com/nomic-io/nomic.git nomic && cd nomic
 git checkout develop
 
 # build and install, adding a `nomic` command to your PATH
-cargo build -p nomic:2.0.1 --release || true
+nomic_build () { cargo build -p nomic:2.0.1 --release;}
+
+nomic_build || true
 
 sudo mv ~/nomic/target/release/nomic /usr/local/bin/
 
