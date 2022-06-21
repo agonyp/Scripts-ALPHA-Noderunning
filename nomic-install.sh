@@ -43,7 +43,7 @@ git clone https://github.com/nomic-io/nomic.git nomic && cd nomic
 git checkout develop
 
 # build and install, adding a `nomic` command to your PATH
-cargo install --lock --path .
+cargo install --locked --path .
 
 sudo mv ~/nomic/target/release/nomic /usr/local/bin/
 
