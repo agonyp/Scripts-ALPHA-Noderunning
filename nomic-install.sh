@@ -45,7 +45,7 @@ git checkout develop
 # build and install, adding a `nomic` command to your PATH
 cargo install --locked --path .
 
-sudo mv ~/nomic/target/release/nomic /usr/local/bin/
+sudo mv ~/.cargo/bin/nomic /usr/local/bin/
 
 nomic init
 external_address="11.11.11.11:26656"
