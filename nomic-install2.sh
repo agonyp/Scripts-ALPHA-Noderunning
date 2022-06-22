@@ -7,7 +7,7 @@ sed -i.bak -e "s/^external_address =.*/external_address = \"$external_address\"/
 seeds="238120dfe716082754048057c1fdc3d6f09609b5@161.35.51.124:26656,a67d7a4d90f84d5c67bfc196aac68441ba9484a6@167.99.119.196:26659"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" ~/.nomic-stakenet/tendermint/config/config.toml
 
-tee $HOME/nomic.service > /dev/null <<EOF
+tee $HOME/nomicd.service > /dev/null <<EOF
 [Unit]
   Description=NOMIC
   After=network-online.target
@@ -20,3 +20,8 @@ tee $HOME/nomic.service > /dev/null <<EOF
 [Install]
   WantedBy=multi-user.target
 EOF
+sudo mv $HOME/nomicd.service /etc/systemd/system/
+
+sudo systemctl daemon-reload
+sudo systemctl enable nomicd
+sudo systemctl restart nomicd
