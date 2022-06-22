@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo mv ~/.cargo/bin/nomic /usr/local/bin/
+sudo mv ~/nomic/target/release/nomic /usr/local/bin/
 
 nomic init
 external_address="11.11.11.11:26656"
