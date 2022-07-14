@@ -32,7 +32,7 @@ if [ ! $NODENAME ]; then
 	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
 fi
 echo "export WALLET=wallet" >> $HOME/.bash_profile
-echo "export CHAIN_ID=sei-testnet-2" >> $HOME/.bash_profile
+echo "export CHAIN_ID=sei-atlantic-1" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
 echo '================================================='
@@ -66,8 +66,9 @@ echo -e "\e[1m\e[32m3. Качаем и компилируем ноду... \e[0m"
 cd $HOME || exit
 git clone https://github.com/sei-protocol/sei-chain.git
 cd sei-chain || exit
-git checkout 1.0.2beta
-go build -o build/seid ./cmd/seid
+git checkout 1.0.6beta
+cd sei-chain/
+make install
 chmod +x ./build/seid && sudo mv ./build/seid /usr/local/bin/seid
 
 
@@ -78,9 +79,10 @@ seid config keyring-backend file
 seid init $NODENAME --chain-id $CHAIN_ID
 
 
-wget -qO $HOME/.sei/config/genesis.json "https://raw.githubusercontent.com/sei-protocol/testnet/master/sei-testnet-2/genesis.json"
-wget -qO $HOME/.sei/config/addrbook.json "https://raw.githubusercontent.com/agonyp/Scripts-ALPHA-Noderunning/main/utilities/sei-addrbook.json"
 
+curl https://raw.githubusercontent.com/sei-protocol/testnet/master/sei-incentivized-testnet/genesis.json > ~/.sei/config/genesis.json
+
+curl https://raw.githubusercontent.com/sei-protocol/testnet/master/sei-incentivized-testnet/addrbook.json > ~/.sei/config/addrbook.json
 
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0usei\"/" $HOME/.sei/config/app.toml
 
