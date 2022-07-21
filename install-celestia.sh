@@ -41,7 +41,7 @@ cd $HOME
 git clone https://github.com/celestiaorg/celestia-app
 cd celestia-app
 git fetch
-git checkout v0.5.3
+git checkout v0.6.0
 make install
 
 cd $HOME

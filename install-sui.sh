@@ -66,7 +66,7 @@ echo -e "\e[1m\e[32m3. Качаем и компилируем ноду... \e[0m"
 cd $HOME || exit
 git clone https://github.com/sei-protocol/sei-chain.git
 cd sei-chain || exit
-git checkout 1.0.6beta
+git checkout 1.0.6beta-val-count-fix
 cd sei-chain/
 make install
 chmod +x ./build/seid && sudo mv ./build/seid /usr/local/bin/seid
