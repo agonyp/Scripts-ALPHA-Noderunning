@@ -3,7 +3,7 @@ sudo systemctl stop seid
 sudo rm /usr/local/bin/seid
 cd sei-chain/
 git fetch --tags -f
-git checkout 1.0.6beta-val-count-fix
+git checkout 1.0.7beta-postfix
 make build
 
 chmod +x ./build/seid && sudo mv ./build/seid /usr/local/bin/seid
