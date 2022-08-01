@@ -58,7 +58,7 @@ echo -e "\e[1;32m Запускаем докер контейнер...\e[0m"
 
 docker compose up -d
 
-echo 'alias sui_log="docker logs sui_node -f"' >> $HOME/.bash_profile
+echo 'alias sui_log="docker logs sui-fullnode-1 -f"' >> $HOME/.bash_profile
 echo 'alias sui="docker exec -it sui_node ./sui"' >> $HOME/.bash_profile
 
 echo '=============== УСТАНОВКА ЗАВЕРШЕНА ==================='
