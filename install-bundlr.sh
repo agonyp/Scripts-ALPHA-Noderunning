@@ -70,10 +70,10 @@ GW_CONTRACT=RkinCLBlY4L5GZFv8gCFcrygTyd5Xm91CzKlR6qxhKA
 GW_ARWEAVE=https://arweave.testnet1.bundlr.network
 EOF
 
-cd $HOME/bundlr/validator-rust && \
+cd $HOME/bundlr/validator && \
 docker-compose up -d
 sleep 2
-cd $HOME/bundlr/validator-rust && \
+cd $HOME/bundlr/validator && \
 npm i -g @bundlr-network/testnet-cli
 
 echo 'alias bundlr_logs="cd $HOME/bundlr/validator-rust && docker-compose logs -f --tail 10"' >> $HOME/.bash_profile
